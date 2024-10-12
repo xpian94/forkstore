@@ -1,6 +1,6 @@
 # ForkStore
 
-[![CI](https://github.com/xpian94/forkstore/actions/workflows/github-actions.yml/badge.svg)](https://github.com/xpian94/forkstore/actions/workflows/github-actions.yml)
+[![CI](https://github.com/xpian94/forkstore/actions/workflows/github-actions.yml/badge.svg?branch=main&event=push)](https://github.com/xpian94/forkstore/actions/workflows/github-actions.yml)
 [![codecov - branches](https://github.com/xpian94/forkstore/blob/main/.github/badges/branches.svg)](https://github.com/xpian94/forkstore/actions/workflows/github-actions.yml)
 [![codecov - missed instructions](https://github.com/xpian94/forkstore/blob/main/.github/badges/jacoco.svg)](https://github.com/xpian94/forkstore/actions/workflows/github-actions.yml)
 
