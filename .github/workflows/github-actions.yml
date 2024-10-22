@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+      - name: CI Info
+        run: echo "${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+
+      - name: Build and All Tests
+        run: mvn clean verify -P all-tests
+
+      - name: Build Tests (Unit and Integration)
+        if: contains(github.head_ref, 'feature')
+        run:
+          mvn clean verify -P ut-it
+
+      - name: Generate JaCoCo Badge
+        id: jacoco
+        uses: cicirello/jacoco-badge-generator@v2
+        with:
+          generate-branches-badge: true
+
+      - name: Log coverage percentage
+        run: |
+          echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
+          echo "branch coverage = ${{ steps.jacoco.outputs.branches }}"
+
+      - name: Upload JaCoCo coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: target/site/jacoco/
