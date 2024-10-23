@@ -16,12 +16,12 @@ public class ProductRepositoryIT {
     private ProductRepository repository;
 
     @Test
-    void nothing() {
-        Product one = Product.builder()
+    void shouldFindByCategory() {
+        var one = Product.builder()
             .category("category")
             .build();
 
-        Product two = Product.builder()
+        var two = Product.builder()
             .category("category")
             .build();
 
@@ -29,10 +29,10 @@ public class ProductRepositoryIT {
 
         var products = repository.findByCategory("category");
 
-        Product first = products.get(0);
-        Product second = products.get(1);
+        one = products.get(0);
+        two = products.get(1);
 
-        assertThat(first.getId()).isEqualTo(1L);
-        assertThat(second.getId()).isEqualTo(2L);
+        assertThat(one.getId()).isEqualTo(1L);
+        assertThat(two.getId()).isEqualTo(2L);
     }
 }
