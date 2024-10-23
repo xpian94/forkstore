@@ -1,5 +1,6 @@
 package org.forkstore.ut;
 
+import org.forkstore.Product;
 import org.forkstore.ProductRepository;
 import org.forkstore.ProductService;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class ProductServiceTest {
     @InjectMocks
     private ProductService service;
 
-    private void stubbingFindByCategory(String category, List<Object> products) {
+    private void stubbingFindByCategory(String category, List<Product> products) {
         when(repository.findByCategory(category)).thenReturn(products);
     }
 
@@ -39,8 +40,8 @@ public class ProductServiceTest {
         String category = "category";
         String other = "other";
 
-        List<Object> productsFromCategory = List.of(new Object());
-        List<Object> productsFromOther = List.of(new Object(), new Object());
+        List<Product> productsFromCategory = List.of(new Product());
+        List<Product> productsFromOther = List.of(new Product(), new Product());
 
         stubbingFindByCategory(category, productsFromCategory);
         stubbingFindByCategory(other, productsFromOther);

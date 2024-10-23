@@ -9,7 +9,7 @@ public class ProductService {
         this.repository = repository;
     }
 
-    public List<Object> searchByCategory(String category) {
+    public List<Product> searchByCategory(String category) {
         return repository.findByCategory(category);
     }
 }
