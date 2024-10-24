@@ -19,4 +19,10 @@ public class Product {
     private Long id;
 
     private String category;
+
+    private String name;
+
+    private Integer quantity;
+
+    private Boolean available;
 }
